@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+    Your Site Tag
+{% endblock title %}
+{% block content %}
+
+<h1>Posts:</h1>
+<ul>
+    
+    {% for post in object_list %}
+        
+        <li><a href="{% url 'article-detail' post.pk %}">{{post.title}}</a>
+        - <a href="{% url 'category' post.category|slugify|title %}">{{post.category}}</a> 
+        -{{post.author.username}}
+        {% if post.author.id == user.id %}<small> <a href="{% url 'update_post'  post.pk%}">(Edit)</a></small><small> <a href="{% url 'delete_post'  post.pk%}">(Delete)</a></small>
+        {% endif %}<br/>
+        {{post.snippet}}
+        <!--{{post.body | slice:":200"|safe}}--></li>
+    {% endfor %}
+    </br>
+        </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+
+<div style="width:350px;" align="pull-right">
+    <div class="card " style="width: 18rem;">
+  <div class="card-body ">
+    <h5 class="card-title">About:</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Info:</h6>
+    <p class="card-text">This site is made by <b>Mehmet Ali Kisacik</b> through Django web framework and styled with Bootsrap v4.5</p>
+    <img src = "https://www.fullstackpython.com/img/logos/django.png" width="240" height="80" class="card-img-top">
+    </br></br> &nbsp;
+    <img src = "https://miro.medium.com/max/1024/1*9HanDsRU11ZMsgDGJwN96w.png" width="100" height="100" class="rounded-circle">
+    &nbsp;&nbsp;&nbsp;
+    <img src = "https://res-5.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco/v1409140079/fms6ghg9immfz9gfqxlq.jpg
+" width="100" height="100" class="rounded-circle">
+
+
+    </div>
+  </div>
+</div>
+</ul>
+
+
+{% endblock %}

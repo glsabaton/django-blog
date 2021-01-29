@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Edit Profile
+{% endblock title %}
+
+{% block content %}
+</br>
+<div class="card mb-3" style="max-width: 400px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+    {% if page_user.get_photo_url%}
+      <img src="{{page_user.get_photo_url}}" class="card-img" >
+      {% else %}
+      <img src="{% static 'theblog/images/default_profile_pic.jpg'%}" class="card-img" alt="...">
+      {% endif %}
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{page_user}}</h5>
+        <p class="card-text">{% if page_user.bio %}
+        {{page_user.bio}}
+        {% endif %}</p>
+        
+        {% if page_user.facebook_url %}
+            <p class="card-text"><small class="text-muted"> <a href ="{{page_user.facebook_url}}">Facebook </a>|  </small></p>
+        {% endif %}
+        {% if page_user.twitter_url %}
+            <p class="card-text"><small class="text-muted"> <a href ="{{page_user.facebook_url}}">Twitter </a>|  </small></p>
+        {% endif %}
+        {% if page_user.instagram_url %}
+            <p class="card-text"><small class="text-muted"> <a href ="{{page_user.facebook_url}}">Instagram </a>  </small></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

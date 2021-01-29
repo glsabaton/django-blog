@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Adding post
+{% endblock title %}
+{% block content %}
+{% if profile.id is user.profile.id %}
+
+    <h2>Edit Profile</h2>
+    
+    <br/> <br/>
+    
+    <div class="form-group">
+    <form method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-secondary">Update Profile Page</button>
+    </div>
+    
+    
+
+{% else %}
+    You have no acces here
+{% endif %}
+</form>
+{% endblock %}

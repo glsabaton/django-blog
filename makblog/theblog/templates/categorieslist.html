@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Categories
+{% endblock title %}
+    {% block content %}
+
+    <h1>{{cats}} Categories</h1>
+
+        {% for item in categories %}
+            
+                <a class="dropdown-item" href ="{% url 'category' item.name|slugify|title %}">{{item.name}}</a>
+            <br/>
+        {% empty %}
+            Sorry this category is empty
+        {% endfor %}
+
+    {% endblock %}

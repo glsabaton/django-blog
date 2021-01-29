@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+    {% block title %}
+    Edit block post
+    {% endblock title %}
+
+    {% block content %}
+    {% if user.id == post.author.id %}
+
+        <h2>Update post</h2>
+        <br/> <br/>
+        <form method="POST">
+        <div class="form-group">
+            {% csrf_token %}
+            {{form.media}}
+            {{form.as_p}}
+            <button class="btn btn-secondary">Update</button>
+        </div>
+        {% else %}
+        You have no acces to this page :(
+    {% endif %}
+
+    </form>
+    {% endblock %}
